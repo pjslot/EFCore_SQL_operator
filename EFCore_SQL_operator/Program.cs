@@ -51,8 +51,8 @@ namespace EFCore_SQL_operator
         {
             //ОТКРЫВАТЬ ТОЛЬКО НА ПЕРВЫЙ ЗАПУСК ДЛЯ СОЗДАНИЯ НАЧИСТО
 
-            //    Database.EnsureDeleted();
-            //     Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -72,7 +72,7 @@ namespace EFCore_SQL_operator
             {
                 //ОТКРЫВАТЬ ТОЛЬКО НА ПЕРВЫЙ ЗАПУСК ДЛЯ СОЗДАНИЯ НАЧИСТО
 
-                //Author a1 = new Author { AuthorName = "Sregey Lukianenko"};
+                //Author a1 = new Author { AuthorName = "Sregey Lukianenko" };
                 //Author a2 = new Author { AuthorName = "Nik Perumov" };
                 //Author a3 = new Author { AuthorName = "Vladimir Vasilyev" };
                 //Author a4 = new Author { AuthorName = "Steven King" };
@@ -90,7 +90,7 @@ namespace EFCore_SQL_operator
                 //Year y4 = new Year { YearName = "2004" };
                 //context.Years.AddRange(y1, y2, y3, y4);
 
-                //Book b1 = new Book { Author = a1, Publisher= p1, Year = y1, BookName = "Luk Book One" };
+                //Book b1 = new Book { Author = a1, Publisher = p1, Year = y1, BookName = "Luk Book One" };
                 //Book b2 = new Book { Author = a1, Publisher = p2, Year = y2, BookName = "Luk Book Two" };
                 //Book b3 = new Book { Author = a2, Publisher = p2, Year = y3, BookName = "Nik Book One" };
                 //Book b4 = new Book { Author = a2, Publisher = p3, Year = y4, BookName = "Nik Book Two" };
@@ -98,7 +98,7 @@ namespace EFCore_SQL_operator
                 //Book b6 = new Book { Author = a3, Publisher = p4, Year = y2, BookName = "Vlad Book Two" };
                 //Book b7 = new Book { Author = a4, Publisher = p4, Year = y3, BookName = "King Book One" };
                 //Book b8 = new Book { Author = a4, Publisher = p1, Year = y4, BookName = "King Book Two" };
-                //context.Books.AddRange(b1, b2, b3, b4, b5, b6, b7, b8);              
+                //context.Books.AddRange(b1, b2, b3, b4, b5, b6, b7, b8);
                 //context.SaveChanges();
 
             }
@@ -149,30 +149,51 @@ namespace EFCore_SQL_operator
             //}
 
             //ЧТЕНИЕ АВТОРА
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("Введите имя автора для вывода информации:");
+            //    string authorNameInput = Console.ReadLine();
+            //    //проверка если такой автор существует
+            //    if (context.Authors.Any(a => a.AuthorName == authorNameInput))
+            //    {
+            //        List<Book> authorsBooks = new List<Book>();
+            //        authorsBooks = context.Authors.Include("Books").FirstOrDefault(a => a.AuthorName.Contains(authorNameInput)).Books;
+            //        foreach (var b in authorsBooks) Console.WriteLine($"Книга номер {b.BookId}, название {b.BookName}");
+            //        Console.WriteLine("Вывод закончен. Press any key.");
+            //        Console.ReadKey();
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Автор не найден. Press any key.");
+            //        Console.ReadKey();
+            //    }
+            //}
+
+            //ПРАВКА АВТОРА
             using (ApplicationContext context = new ApplicationContext())
             {
                 Console.Clear();
-                Console.WriteLine("Введите имя автора для вывода информации:");
+                Console.WriteLine("Введите имя автора для правки:");
                 string authorNameInput = Console.ReadLine();
                 //проверка если такой автор существует
                 if (context.Authors.Any(a => a.AuthorName == authorNameInput))
                 {
-                    List<Book> authorsBooks = new List<Book>();
-                    authorsBooks = context.Authors.Include("Books").FirstOrDefault(a => a.AuthorName.Contains(authorNameInput)).Books;                 
-                    foreach (var b in authorsBooks) Console.WriteLine($"Книга номер {b.BookId}, название {b.BookName}");       
-
-                    
-                    Console.WriteLine("Вывод закончен. Press any key.");
+                    Console.WriteLine("Введите новое имя автора:");
+                    string newauthorNameInput = Console.ReadLine();
+                    Author authorToChange = context.Authors.FirstOrDefault(a => a.AuthorName.Contains(authorNameInput));
+                    authorToChange.AuthorName = newauthorNameInput;
+                    context.Authors.Update(authorToChange);
+                    context.SaveChanges();
+                    Console.WriteLine("Правка внесена. Press any key.");
                     Console.ReadKey();
                 }
                 else
                 {
-                    
                     Console.WriteLine("Автор не найден. Press any key.");
                     Console.ReadKey();
                 }
             }
-
 
 
             //ОБЩАЯ СТАТИСТИКА ПО БАЗЕ
