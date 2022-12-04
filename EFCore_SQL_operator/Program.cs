@@ -98,13 +98,16 @@ namespace EFCore_SQL_operator
                 //Book b6 = new Book { Author = a3, Publisher = p4, Year = y2, BookName = "Vlad Book Two" };
                 //Book b7 = new Book { Author = a4, Publisher = p4, Year = y3, BookName = "King Book One" };
                 //Book b8 = new Book { Author = a4, Publisher = p1, Year = y4, BookName = "King Book Two" };
-                //context.Books.AddRange(b1, b2, b3, b4, b5, b6, b7, b8);
+                //Book b9 = new Book { Author = a2, Publisher = p4, Year = y1, BookName = "Nik Book Three" };
+                //context.Books.AddRange(b1, b2, b3, b4, b5, b6, b7, b8, b9);
                 //context.SaveChanges();
+
+
 
             }
             //==============================================
 
-            //ДОБАВКА АВТОРА
+            //***ДОБАВКА АВТОРА
             //using (ApplicationContext context = new ApplicationContext())
             //{
             //    Console.Clear();
@@ -126,7 +129,7 @@ namespace EFCore_SQL_operator
             //    }
             //}
 
-            //УДАЛЕНИЕ АВТОРА
+            //***УДАЛЕНИЕ АВТОРА
             //using (ApplicationContext context = new ApplicationContext())
             //{
             //    Console.Clear();
@@ -148,7 +151,7 @@ namespace EFCore_SQL_operator
             //    }
             //}
 
-            //ЧТЕНИЕ АВТОРА
+            //***ЧТЕНИЕ АВТОРА
             //using (ApplicationContext context = new ApplicationContext())
             //{
             //    Console.Clear();
@@ -170,30 +173,49 @@ namespace EFCore_SQL_operator
             //    }
             //}
 
-            //ПРАВКА АВТОРА
-            using (ApplicationContext context = new ApplicationContext())
-            {
-                Console.Clear();
-                Console.WriteLine("Введите имя автора для правки:");
-                string authorNameInput = Console.ReadLine();
-                //проверка если такой автор существует
-                if (context.Authors.Any(a => a.AuthorName == authorNameInput))
-                {
-                    Console.WriteLine("Введите новое имя автора:");
-                    string newauthorNameInput = Console.ReadLine();
-                    Author authorToChange = context.Authors.FirstOrDefault(a => a.AuthorName.Contains(authorNameInput));
-                    authorToChange.AuthorName = newauthorNameInput;
-                    context.Authors.Update(authorToChange);
-                    context.SaveChanges();
-                    Console.WriteLine("Правка внесена. Press any key.");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    Console.WriteLine("Автор не найден. Press any key.");
-                    Console.ReadKey();
-                }
-            }
+            //***ПРАВКА АВТОРА
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("Введите имя автора для правки:");
+            //    string authorNameInput = Console.ReadLine();
+            //    //проверка если такой автор существует
+            //    if (context.Authors.Any(a => a.AuthorName == authorNameInput))
+            //    {
+            //        Console.WriteLine("Введите новое имя автора:");
+            //        string newauthorNameInput = Console.ReadLine();
+            //        Author authorToChange = context.Authors.FirstOrDefault(a => a.AuthorName.Contains(authorNameInput));
+            //        authorToChange.AuthorName = newauthorNameInput;
+            //        context.Authors.Update(authorToChange);
+            //        context.SaveChanges();
+            //        Console.WriteLine("Правка внесена. Press any key.");
+            //        Console.ReadKey();
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Автор не найден. Press any key.");
+            //        Console.ReadKey();
+            //    }
+            //}
+
+            //***ПОИСК АВТОРА С НАИБОЛЬШИМ КОЛИЧЕСТВОМ КНИГ
+            //using (ApplicationContext context = new ApplicationContext())
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("Автор с наибольшим количеством книг:");
+
+            //    //поиск автора с наибольшим количеством книг:
+            //    Author maxBookAuthor = (from a in context.Authors
+            //                        orderby -a.Books.Count
+            //                        select a).First();
+
+            //    Console.WriteLine(maxBookAuthor.AuthorName);
+
+            //    Console.WriteLine("Вывод закончен. Press any key.");
+            //        Console.ReadKey();
+            //}
+
+
 
 
             //ОБЩАЯ СТАТИСТИКА ПО БАЗЕ
