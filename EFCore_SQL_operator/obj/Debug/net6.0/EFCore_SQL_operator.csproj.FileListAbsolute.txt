@@ -110,3 +110,10 @@ C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\obj\Debu
 C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\obj\Debug\net6.0\EFCore_SQL_operator.pdb
 C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\obj\Debug\net6.0\EFCore_SQL_operator.genruntimeconfig.cache
 C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\obj\Debug\net6.0\ref\EFCore_SQL_operator.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\pjslo\Documents\GitHub\EFCore_SQL_operator\EFCore_SQL_operator\bin\Debug\net6.0\System.Memory.Data.dll
