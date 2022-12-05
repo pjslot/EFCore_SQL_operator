@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 
 namespace EFCore_SQL_operator
 {
@@ -561,24 +562,153 @@ namespace EFCore_SQL_operator
         //========================================= ОСНОВНОЙ БЛОК  =========================================
         static void Main(string[] args)
         {
+            string mainInput = "";
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("================");
+                Console.WriteLine("Главное меню БД.");
+                Console.WriteLine("================");
+                Console.WriteLine("1. Добавление объектов БД.");
+                Console.WriteLine("2. Чтение объектов БД.");
+                Console.WriteLine("3. Удаление объектов БД.");
+                Console.WriteLine("4. Корректировка объектов БД.");
+                Console.WriteLine("5. Поиск по условию в БД.");
+                Console.WriteLine("6. Статистика БД.");
+                Console.WriteLine("0. Выход.");
+                Console.WriteLine("_____________________________");
+                Console.WriteLine("Введите номер пункта меню...");
+                mainInput = Console.ReadLine();
+                switch (mainInput)
+                {
+                    case "1":
+                        string addInput = "";
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("=============================");
+                            Console.WriteLine("Меню добавления объекта в БД.");
+                            Console.WriteLine("=============================");
+                            Console.WriteLine("1. Добавление Автора.");
+                            Console.WriteLine("2. Добавление Издателя.");
+                            Console.WriteLine("3. Добавление Года.");
+                            Console.WriteLine("4. Добавление Книги.");                            
+                            Console.WriteLine("0. Выход в главное меню.");
+                            Console.WriteLine("_____________________________");
+                            Console.WriteLine("Введите номер пункта меню...");
+                            addInput = Console.ReadLine();
+                            switch (addInput)
+                            {
+                                case "1":
+                                AddAuthor();
+                                break;
+                                case "2":
+                                AddPublisher();
+                                break;
+                                case "3":
+                                AddYear();
+                                break;
+                                case "4":
+                                AddBook();
+                                break;
+                            }
+                        } while (addInput != "0");
 
 
-           
+                        break;
+                    case "2":
+                        string readInput = "";
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("=========================");
+                            Console.WriteLine("Меню чтения объекта в БД.");
+                            Console.WriteLine("=========================");
+                            Console.WriteLine("1. Чтение Автора.");
+                            Console.WriteLine("2. Чтение Издателя.");
+                            Console.WriteLine("3. Чтение Года.");
+                            Console.WriteLine("0. Выход в главное меню.");
+                            Console.WriteLine("_____________________________");
+                            Console.WriteLine("Введите номер пункта меню...");
+                            readInput = Console.ReadLine();
+                            switch (readInput)
+                            {
+                                case "1":
+                                    ReadAuthor();
+                                    break;
+                                case "2":
+                                    ReadPublisher();
+                                    break;
+                                case "3":
+                                    ReadYear();
+                                    break;                                
+                            }
+                        } while (readInput != "0");
+                        break;
+                    case "3":
+                        string deleteInput = "";
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("=============================");
+                            Console.WriteLine("Меню удаления объекта из БД.");
+                            Console.WriteLine("=============================");
+                            Console.WriteLine("1. Удаление Автора.");
+                            Console.WriteLine("2. Удаление Издателя.");
+                            Console.WriteLine("3. Удаление Года.");
+                            Console.WriteLine("4. Удаление Книги.");
+                            Console.WriteLine("0. Выход в главное меню.");
+                            Console.WriteLine("_____________________________");
+                            Console.WriteLine("Введите номер пункта меню...");
+                            deleteInput = Console.ReadLine();
+                            switch (deleteInput)
+                            {
+                                case "1":
+                                    DeleteAuthor();
+                                    break;
+                                case "2":
+                                    DeletePublisher();
+                                    break;
+                                case "3":
+                                    DeleteYear();
+                                    break;
+                                case "4":
+                                    DeleteBook();
+                                    break;
+                            }
+                        } while (deleteInput != "0");
+                        break;
+                    case "4":
+                        Console.Clear();
+                        Console.WriteLine("пункт корректировок");
+                        Console.ReadKey();
+                        break;                
+                    case "5":
+                        Console.Clear();
+                        Console.WriteLine("пункт поиска по условию");
+                        Console.ReadKey();
+                        break;
+                    case "6":
+                        Console.Clear();
+                        Console.WriteLine("пункт статистики");
+                        Console.ReadKey();
+                        break;
+
+                }
+
+            } while (mainInput != "0");
 
 
 
 
 
-            DBStatistic();
 
 
-            
 
 
-           
 
 
-           
+
         }
     }
 }
