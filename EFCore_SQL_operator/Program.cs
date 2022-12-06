@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//EFCore_SQL_operator v1.0 (c) KabluchkovDS
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
 using System.Collections.Generic;
@@ -514,6 +515,8 @@ namespace EFCore_SQL_operator
                 Console.WriteLine("_____________________________");
                 Console.WriteLine("Среднее количество книг на издательство: " + (double)context.Books.Count() / (double)context.Publishers.Count());
                 Console.WriteLine("_____________________________");
+                Console.WriteLine("Вывод закончен. Press any key.");
+                Console.ReadKey();
             }
         }
 
@@ -562,6 +565,7 @@ namespace EFCore_SQL_operator
         //========================================= ОСНОВНОЙ БЛОК  =========================================
         static void Main(string[] args)
         {
+
             string mainInput = "";
             do
             {
@@ -679,34 +683,66 @@ namespace EFCore_SQL_operator
                         } while (deleteInput != "0");
                         break;
                     case "4":
-                        Console.Clear();
-                        Console.WriteLine("пункт корректировок");
-                        Console.ReadKey();
+                        string editInput = "";
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("==========================");
+                            Console.WriteLine("Меню правки объекта из БД.");
+                            Console.WriteLine("==========================");
+                            Console.WriteLine("1. Правка Автора.");
+                            Console.WriteLine("2. Правка Издателя.");
+                            Console.WriteLine("3. Правка Года.");
+                            Console.WriteLine("4. Правка Книги.");
+                            Console.WriteLine("0. Выход в главное меню.");
+                            Console.WriteLine("_____________________________");
+                            Console.WriteLine("Введите номер пункта меню...");
+                            editInput = Console.ReadLine();
+                            switch (editInput)
+                            {
+                                case "1":
+                                    EditAuthor();
+                                    break;
+                                case "2":
+                                    EditPublisher();
+                                    break;
+                                case "3":
+                                    EditYear();
+                                    break;
+                                case "4":
+                                    EditBook();
+                                    break;
+                            }
+                        } while (editInput != "0");
                         break;                
                     case "5":
-                        Console.Clear();
-                        Console.WriteLine("пункт поиска по условию");
-                        Console.ReadKey();
+                        string searchInput = "";
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("============================");
+                            Console.WriteLine("Меню поиска в БД по условию.");
+                            Console.WriteLine("============================");
+                            Console.WriteLine("1. Поиск Автора с наибольшим количеством книг.");
+                            Console.WriteLine("0. Выход в главное меню.");
+                            Console.WriteLine("_____________________________");
+                            Console.WriteLine("Введите номер пункта меню...");
+                            searchInput = Console.ReadLine();
+                            switch (searchInput)
+                            {
+                                case "1":
+                                    MaxBookAuthor();
+                                    break;                             
+                            }
+                        } while (searchInput != "0");
                         break;
                     case "6":
-                        Console.Clear();
-                        Console.WriteLine("пункт статистики");
-                        Console.ReadKey();
+                        DBStatistic();                      
                         break;
 
                 }
 
             } while (mainInput != "0");
-
-
-
-
-
-
-
-
-
-
 
 
         }
